@@ -6,11 +6,11 @@ export const Home = () => {
         <RevealOnScroll>
         <div className="text-center z-10 px-4">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-right">
-                Hi, I,m Shahrukh Dev
+                Hi, I,m Shahrukh
             </h1>
 
             <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                I have worked in iOS (Native) and Android (Native). I also expertise in Flutter Dart. I have worked in US based startup CalAI an Calorie Tracking App it has more than 30K daily active users. I have worked with Steppi UAE based startup it more than 100K+ downloads. I have worked with Hiiker an Ireland based startup it has also have 100K+ downloads.
+                I’m a full-stack Mobile & Web App Developer with proven expertise in iOS (Swift), Android (Kotlin/Java), Flutter (Dart), Node.js, and React.js. I specialize in building scalable, high-performance applications — from intuitive mobile apps to robust backend APIs and modern web interfaces.
             </p>
 
             <div className="flex justify-center space-x-4">
