@@ -3,7 +3,7 @@ import { RevealOnScroll } from "../RevealOnScroll"
 export const About = () => {
 
     const frontendSkills = ["Swift", "UIKit","SwiftUI", "Kotlin", "Jetpack Compose", "Flutter",, "RESTAPI",  "React Native", "Firebase", "(GCP)", ]
-    const backendSkills = ["Nodejs", "Reactjs", "TypeScript", "TailwindCSS", "AWS", "MySQL", "MongoDB", "NEXTJS", "PostgreSQL"]
+    const backendSkills = ["Nodejs", "Reactjs", "TypeScript", "NESTJS","TailwindCSS", "AWS", "MySQL", "MongoDB", "NEXTJS", "PostgreSQL"]
 
     return <section id="about" className="min-h-screen flex items-center justify-center py-20">
 
@@ -29,8 +29,6 @@ export const About = () => {
 
                     <p>
                         From crafting cross-platform apps to full-stack solutions, I deliver startup-grade agility, clean architecture, and reliable code tailored for growth-focused products.                    </p>
-
-
 
                     <p>
                         <br />
@@ -93,10 +91,13 @@ export const About = () => {
                         </h3>
 
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
-                            <li><strong>BS computer science </strong> - XYZ Universion
+                            <li><strong>BS computer science </strong> - PMAS Arid University
                             </li>
 
-                            <li><strong>BS computer science </strong> - XYZ Universion
+                            <li><strong>Intermediate</strong> - Gordon College
+                            </li>
+
+                            <li><strong>Matriculation</strong> - Sir Syed Public School
                             </li>
 
                         </ul>
@@ -110,10 +111,16 @@ export const About = () => {
                         </h3>
 
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
-                            <li><strong>BS computer science </strong> - XYZ Universion
+                            <li><strong>Sofware Engineer</strong> - CodesOrbit - (2017 - 2020)
                             </li>
 
-                            <li><strong>BS computer science </strong> - XYZ Universion
+                            <li><strong>Team Lead</strong> - CodesOrbit - (2020 - 2021)
+                            </li>
+
+                            <li><strong>Senior iOS Engineer</strong> - Phaedra Solution - (2021 - 2022)
+                            </li>
+
+                            <li><strong>Full Stack Developer</strong> - Freelancing Expert - Present
                             </li>
 
                         </ul>

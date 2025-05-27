@@ -10,7 +10,9 @@ export const Home = () => {
             </h1>
 
             <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-                I’m a full-stack Mobile & Web App Developer with proven expertise in iOS (Swift), Android (Kotlin/Java), Flutter (Dart), Node.js, and React.js. I specialize in building scalable, high-performance applications — from intuitive mobile apps to robust backend APIs and modern web interfaces.
+            I’m a full-stack Mobile & Web App Developer with proven expertise in iOS (Swift), Android (Kotlin/Java), Flutter (Dart), Node.js, and React.js. I specialize in building scalable, high-performance applications — from intuitive mobile apps to robust backend APIs and modern web interfaces.
+            <br/>
+            I’ve helped startups and businesses launch cross-platform mobile apps, responsive websites, and cloud-powered APIs that deliver real value to users. My focus is on clean architecture, fast performance, and user-first design that scales across platforms.
             </p>
 
             <div className="flex justify-center space-x-4">
