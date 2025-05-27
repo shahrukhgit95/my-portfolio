@@ -2,8 +2,8 @@ import { RevealOnScroll } from "../RevealOnScroll"
 
 export const About = () => {
 
-    const frontendSkills = ["React", "Vue", "TypeScript", "TailwindCSS"]
-    const backendSkills = ["React", "Vue", "TypeScript", "TailwindCSS"]
+    const frontendSkills = ["Swift", "UIKit","SwiftUI", "Kotlin", "Jetpack Compose", "Flutter",, "RESTAPI",  "React Native", "Firebase", "(GCP)", ]
+    const backendSkills = ["Nodejs", "Reactjs", "TypeScript", "TailwindCSS", "AWS", "MySQL", "MongoDB", "NEXTJS", "PostgreSQL"]
 
     return <section id="about" className="min-h-screen flex items-center justify-center py-20">
 
@@ -17,11 +17,15 @@ export const About = () => {
 
                 <div className="rounded-xl p-8 border-white/10 boeder hover:-translate-y-1 transition-all">
 
-                    <p>
+                    <p  className="text-center">
                         🚀 <strong>Full-Stack Mobile & Web App Developer</strong>
                         <br />
                         <br />
-                        I’m a results-driven developer with expertise in iOS (Swift), Android (Kotlin/Java), Flutter (Dart), Node.js, and React.js. I build scalable mobile apps, robust backend systems, and modern web interfaces optimized for performance and user experience.                    </p>
+
+
+                        </p>
+                        <p>
+                        I'm a results-driven developer with expertise in iOS (Swift), Android (Kotlin/Java), Flutter (Dart), Node.js, and React.js. I build scalable mobile apps, robust backend systems, and modern web interfaces optimized for performance and user experience.                    </p>
 
                     <p>
                         From crafting cross-platform apps to full-stack solutions, I deliver startup-grade agility, clean architecture, and reliable code tailored for growth-focused products.                    </p>
@@ -39,16 +43,6 @@ export const About = () => {
                         <br />
                         <br />
                     </p>
-
-                    <p>
-                        🌍 <strong>Why Work With Me?</strong><br />
-                        ✅ 7+ years of professional experience<br />
-                        ✅ Proven track record with global startups<br />
-                        ✅ Full-cycle development: idea to deployment<br />
-                        ✅ Fast, scalable, and reliable code<br />
-                        ✅ Strong communication & on-time delivery
-                    </p>
-
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -56,14 +50,17 @@ export const About = () => {
                     <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
 
                         <h3 className="text-xl font-bold mb-4">
-                            Frontend
+                            Mobile Development
                         </h3>
 
                         <div className="flex flex-wrap gap-2"></div>
                         {frontendSkills.map((tech, key) => (
-                            <span key={key} className="bg-blue-500/10 text text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                                {tech}
-                            </span>
+                            <>
+                                <span key={tech} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
+                                    {tech}
+                                </span>
+                                {(key + 1) % 4 === 0 && <div className="w-full h-0" />}
+                            </>
                         ))}
 
                     </div>
@@ -71,14 +68,17 @@ export const About = () => {
                     <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
 
                         <h3 className="text-xl font-bold mb-4">
-                            Backend
+                            Web Development
                         </h3>
 
-                        <div className="flex flex-wrap gap-2"></div>
+                        <div className="flex flex-wrap w-200 gap-2"></div>
                         {backendSkills.map((tech, key) => (
-                            <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                                {tech}
-                            </span>
+                            <>
+                                <span key={tech} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
+                                    {tech}
+                                </span>
+                                {(key + 1) % 4 === 0 && <div className="w-full h-0" />}
+                            </>
                         ))}
 
                     </div>

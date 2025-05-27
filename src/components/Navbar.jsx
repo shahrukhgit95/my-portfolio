@@ -14,7 +14,7 @@ useEffect(() => {
                 <div className="flex items-center justify-between h-16">
     <a href="#home" className="font-monotext-xl font-bold text-white">
     {" "}
-     pedro<span className="text-blue-500 ">.tech </span> 
+     shahrukh<span className="text-blue-500 ">.dev </span> 
      </a>
 
      <div className="w-7 h-5 relative cursor-pointer z-40 md:hidden" onClick={() => setMenuOpen((prev) => !prev)}>
