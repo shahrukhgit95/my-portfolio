@@ -19,7 +19,7 @@ export const Projects = () => {
                             Meet Cal AI, the AI-powered app for easy calorie tracking. Snap a photo, scan a barcode, or describe your meal and get instant calorie and nutrient info.
                         </p>
 
-                        <div>
+                        <div className="flex flex-wrap gap-2">
                             {["iOS", "SwiftUI", "AI", "Chatgpt"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
@@ -46,9 +46,8 @@ export const Projects = () => {
                             Bring your team together – wherever they are. STEPPI's virtual challenges make it easy to track activity, set goals, and keep employees moving.
                         </p>
 
-                        <div>
-                            {["iOS", "Android", "Watch", "Apple Watch", "Garmin", "Samsung Band", "Huawie Watch"].map((tech, key) => (
-
+                        <div className="flex flex-wrap gap-2">
+                            {["Watch", "Apple Watch", "Garmin", "Samsung Band", "Huawie Watch"].map((tech, key) => (
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
                                     {tech}
                                 </span>
@@ -74,8 +73,8 @@ export const Projects = () => {
                             With my phone in the Phone Skope case, I pop it onto my scope and can perfectly see everything on my phone. Now I can share pictures and video with friends and family.
                         </p>
 
-                        <div>
-                            {["iOS", "UIKit", "Swift", "Camera", "AVFoundation", "Cropping"].map((tech, key) => (
+                         <div className="flex flex-wrap gap-2">
+                            {["UIKit", "Camera", "AVFoundation", "Cropping"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
                                     {tech}
@@ -102,7 +101,7 @@ export const Projects = () => {
                             HiiKER helps you to find 1000s of the best backpacking and hiking adventures, with reviews, photos, and great places to stay.
                         </p>
 
-                        <div>
+                        <div className="flex flex-wrap gap-2">
                             {["iOS", "Swift", "Mapbox", "GraphQL"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
@@ -130,7 +129,7 @@ export const Projects = () => {
                             iPaparazzo is a cutting-edge mobile application that revolutionizes content monetization through its innovative '1 Seller to 1 Buyer' model.
                         </p>
 
-                        <div>
+                        <div className="flex flex-wrap gap-2">
                             {["iOS", "Swift", "Mapbox", "GraphQL"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
@@ -158,7 +157,7 @@ export const Projects = () => {
                             A Canadian AgroTech startup, successfully securing $4 million in funding. My involvement in Dimitra helped streamline operations and foster innovation.
                         </p>
 
-                        <div>
+                        <div className="flex flex-wrap gap-2">
                             {["iOS", "Swift", "Mapbox", "GraphQL"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
@@ -186,7 +185,7 @@ export const Projects = () => {
                             Urban Service: Your On-Demand Home Service Hero. Urban Service helps you find reliable home service professionals for a stress-free home.
                         </p>
 
-                        <div>
+                        <div className="flex flex-wrap gap-2">
                             {["Flutter", "Nodejs", "Reactjs", "Stripe", "Checkout", "Subscription"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
@@ -214,7 +213,7 @@ export const Projects = () => {
                             Track your progress and achieve healthier, fuller hair with our innovative iOS app.
                         </p>
 
-                        <div>
+                        <div className="flex flex-wrap gap-2">
                             {["iOS", "Nest", "Chatgpt", "RESTAPI", "Notifications"].map((tech, key) => (
 
                                 <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
