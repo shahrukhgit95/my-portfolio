@@ -36,21 +36,21 @@ export const Contact = () => {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="relative">
 
-                            <input placeholder="Name...." value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} type="text" id="name" name="name" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
+                            <input placeholder="name..." value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} type="text" id="name" name="name" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
                             </input>
 
                         </div>
 
                         <div className="relative">
 
-                            <input placeholder="example@gmail.com" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} type="text" id="email" name="email" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
+                            <input placeholder="example@gmail.com..." value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} type="text" id="email" name="email" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
                             </input>
 
                         </div>
 
                         <div className="relative">
 
-                            <textarea placeholder="Your message" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} type="text" id="message" name="message" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
+                            <textarea placeholder="your message..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} type="text" id="message" name="message" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
                             </textarea>
 
                         </div>
