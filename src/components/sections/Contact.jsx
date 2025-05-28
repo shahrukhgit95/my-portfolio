@@ -13,14 +13,15 @@ export const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        
-        emailJs.sendForm(import.meta.env.VITE_SERVICE_ID,import.meta.env.TEMPLATE_ID, e.target, import.meta.env.PUBLIC_KEY).then(() => {
-            alert("Message Sent.")
-            setFormData({name: "", email: "", message: ""})
-        }).catch (() => {
-            alert("Something went wrong. Please try again.")
-        })
+        emailJs.sendForm("service_cozzbs9","template_4uhlrqi", e.target, "IiUfGOCsqyW-E1o4x")
+            .then(() => {
+                alert("Message Sent.")
+                setFormData({name: "", email: "", message: ""})
+            })
+            .catch((error) => {
+                console.error(error);
+                alert("Something went wrong. Please try again.\n" + (error?.text || error?.message || error));
+            })
     }
     return (
         <section id="contact"
