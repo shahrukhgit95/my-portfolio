@@ -1,237 +1,86 @@
+import { useState } from "react"
+import { apps } from "../../data/apps"
+import { asset } from "../../lib/asset"
 import { RevealOnScroll } from "../RevealOnScroll"
 
-export const Projects = () => {
+const filters = ["All", "Android", "iOS"]
 
-    return (<section id="projects" className="min-h-screen flex items-center justify-center py-20">
+const statusTone = {
+    Live: "text-gold",
+    "In review": "text-cream",
+    "Launching soon": "text-coral",
+}
 
-        <RevealOnScroll>
-            <div className="max-w-5xl mx-auto px-4">
-                <h2 className="text-center text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-                    {""}
-                    Featured Projects
-                </h2>
+export const Apps = () => {
+    const [filter, setFilter] = useState("All")
+    const visible = filter === "All" ? apps : apps.filter((app) => app.platform === filter)
 
-                <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
+    return (
+        <section id="apps" className="px-4 py-20">
+            <RevealOnScroll>
+                <div className="mx-auto max-w-6xl">
+                    <p className="text-sm uppercase tracking-[0.22em] text-gold">The catalog</p>
+                    <h2 className="mt-3 font-serif text-4xl text-cream md:text-5xl">Apps ready to grow</h2>
+                    <p className="mt-4 max-w-2xl text-muted">
+                        Each card opens a page with the store screenshots and the features taken from the live listing, TestFlight, or the launch note.
+                    </p>
 
-                        <h3 className="text-xl font-bold mb-2 "> CalAI - Calorie Tracking App</h3>
-                        <p className="text-gray-400 mb-4">
-                            Meet Cal AI, the AI-powered app for easy calorie tracking. Snap a photo, scan a barcode, or describe your meal and get instant calorie and nutrient info.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["iOS", "SwiftUI", "AI", "Chatgpt"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
-
-
+                    <div className="mt-8 flex gap-2">
+                        {filters.map((item) => (
+                            <button
+                                key={item}
+                                type="button"
+                                onClick={() => setFilter(item)}
+                                className={`rounded-full px-4 py-2 text-sm transition ${filter === item ? "bg-gold text-ink" : "border border-white/10 text-muted hover:text-cream"}`}
+                            >
+                                {item}
+                            </button>
+                        ))}
                     </div>
 
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 "> Steppi - Fitness Tracker</h3>
-                        <p className="text-gray-400 mb-4">
-                            Bring your team together – wherever they are. STEPPI's virtual challenges make it easy to track activity, set goals, and keep employees moving.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["Watch", "Apple Watch", "Garmin", "Samsung Band", "Huawie Watch"].map((tech, key) => (
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
+                    <div className="mt-8 grid gap-6 md:grid-cols-2">
+                        {visible.map((app) => (
+                            <a
+                                key={app.id}
+                                href={`#app/${app.id}`}
+                                className="group overflow-hidden rounded-3xl border border-white/10 bg-card transition hover:-translate-y-1 hover:border-gold/40"
+                            >
+                                <div className="h-[28rem] overflow-hidden bg-black/30">
+                                    {app.shots[0] ? (
+                                        <img
+                                            src={asset(app.shots[0])}
+                                            alt=""
+                                            className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                                        />
+                                    ) : (
+                                        <div className="flex h-full items-end bg-gradient-to-br from-gold/25 via-card to-coral/20 p-5">
+                                            <span className="font-serif text-3xl text-cream">{app.status}</span>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3">
+                                        {app.icon ? (
+                                            <img src={asset(app.icon)} alt="" className="h-12 w-12 rounded-2xl" />
+                                        ) : (
+                                            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gold/15 font-serif text-gold">{app.monogram}</span>
+                                        )}
+                                        <div>
+                                            <h3 className="font-serif text-2xl text-cream">{app.name}</h3>
+                                            <p className="text-sm text-muted">{app.platform} · {app.category}</p>
+                                        </div>
+                                    </div>
+                                    <p className="mt-4 text-cream/85">{app.tagline}</p>
+                                    <div className="mt-4 flex items-center justify-between text-sm">
+                                        <span className={statusTone[app.status]}>{app.stat}</span>
+                                        <span className="text-muted group-hover:text-gold">Features and screenshots →</span>
+                                    </div>
+                                </div>
                             </a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 "> PhoneSkope - Camera App</h3>
-                        <p className="text-gray-400 mb-4">
-                            With my phone in the Phone Skope case, I pop it onto my scope and can perfectly see everything on my phone. Now I can share pictures and video with friends and family.
-                        </p>
-
-                         <div className="flex flex-wrap gap-2">
-                            {["UIKit", "Camera", "AVFoundation", "Cropping"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 "> Hiiker</h3>
-                        <p className="text-gray-400 mb-4">
-                            HiiKER helps you to find 1000s of the best backpacking and hiking adventures, with reviews, photos, and great places to stay.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["iOS", "Swift", "Mapbox", "GraphQL"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 "> iPaparazzo</h3>
-                        <p className="text-gray-400 mb-4">
-                            iPaparazzo is a cutting-edge mobile application that revolutionizes content monetization through its innovative '1 Seller to 1 Buyer' model.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["iOS", "Swift", "Mapbox", "GraphQL"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 "> Dimitra - AgroTech Startup</h3>
-                        <p className="text-gray-400 mb-4">
-                            A Canadian AgroTech startup, successfully securing $4 million in funding. My involvement in Dimitra helped streamline operations and foster innovation.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["iOS", "Swift", "Mapbox", "GraphQL"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 "> Urban Service: Local Experts</h3>
-                        <p className="text-gray-400 mb-4">
-                            Urban Service: Your On-Demand Home Service Hero. Urban Service helps you find reliable home service professionals for a stress-free home.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["Flutter", "Nodejs", "Reactjs", "Stripe", "Checkout", "Subscription"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition">
-
-                        <h3 className="text-xl font-bold mb-2 ">HairTrack-AI </h3>
-                        <p className="text-gray-400 mb-4">
-                            Track your progress and achieve healthier, fuller hair with our innovative iOS app.
-                        </p>
-
-                        <div className="flex flex-wrap gap-2">
-                            {["iOS", "Nest", "Chatgpt", "RESTAPI", "Notifications"].map((tech, key) => (
-
-                                <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow[0_2px_8px_rgba(59,130,246,0.2)] transition-all">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-
-                        <div className="flex justify-between items-center">
-                            <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                                {" "}
-                                View Project &rarr;
-                            </a>
-
-                        </div>
+                        ))}
                     </div>
                 </div>
-            </div>
-        </RevealOnScroll>
-    </section>)
+            </RevealOnScroll>
+        </section>
+    )
 }

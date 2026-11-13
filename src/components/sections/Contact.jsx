@@ -1,69 +1,55 @@
 import { useState } from "react"
+import { profile } from "../../data/apps"
 import { RevealOnScroll } from "../RevealOnScroll"
-import emailJs from 'emailjs-com' 
 
 export const Contact = () => {
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" })
 
-    const [formData , setFormData] = useState({
-        name: "",
-        email:"",
-        message: ""
-    })
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        emailJs.sendForm("service_cozzbs9","template_4uhlrqi", e.target, "IiUfGOCsqyW-E1o4x")
-            .then(() => {
-                alert("Message Sent.")
-                setFormData({name: "", email: "", message: ""})
-            })
-            .catch((error) => {
-                console.error(error);
-                alert("Something went wrong. Please try again.\n" + (error?.text || error?.message || error));
-            })
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const subject = `Partnership inquiry from ${formData.name}`
+        const body = `${formData.message}\n\n${formData.name}\n${formData.email}`
+        window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     }
+
+    const field = "w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-cream outline-none transition placeholder:text-muted/70 focus:border-gold"
+
     return (
-        <section id="contact"
-            className="min-h-screen flex item-center justify-center py-20">
-
+        <section id="contact" className="px-4 py-20">
             <RevealOnScroll>
-                <div className="px-4 w-full max-w-lg mx-auto">
-                    <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-right">
-                        {" "}
-                        Get In Touch
-                    </h2>
-
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="relative">
-
-                            <input placeholder="name..." value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} type="text" id="name" name="name" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
-                            </input>
-
+                <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
+                    <div>
+                        <p className="text-sm uppercase tracking-[0.22em] text-gold">Contact</p>
+                        <h2 className="mt-3 font-serif text-4xl text-cream md:text-6xl">Open to a call this week.</h2>
+                        <p className="mt-4 max-w-md text-lg text-muted">
+                            {profile.name} · {profile.studio}. Tell me which apps you want to fund, scale, or buy.
+                        </p>
+                        <div className="mt-8 space-y-3">
+                            <a href={`mailto:${profile.email}`} className="block text-xl text-cream hover:text-gold">{profile.email}</a>
+                            <a href={profile.phoneHref} className="block text-xl text-cream hover:text-gold">{profile.phone}</a>
+                            <a href={profile.whatsapp} target="_blank" rel="noreferrer" className="inline-flex rounded-full bg-[#1f8a4c] px-5 py-3 font-medium text-white hover:bg-[#187a41]">
+                                WhatsApp
+                            </a>
                         </div>
+                    </div>
 
-                        <div className="relative">
+                    <form onSubmit={handleSubmit} className="rounded-3xl border border-white/10 bg-card p-6">
+                        <label className="block text-sm text-muted" htmlFor="name">Name</label>
+                        <input id="name" name="name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={`mt-2 ${field}`} />
 
-                            <input placeholder="example@gmail.com..." value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} type="text" id="email" name="email" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
-                            </input>
+                        <label className="mt-4 block text-sm text-muted" htmlFor="email">Email</label>
+                        <input id="email" name="email" type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={`mt-2 ${field}`} />
 
-                        </div>
+                        <label className="mt-4 block text-sm text-muted" htmlFor="message">Message</label>
+                        <textarea id="message" name="message" required rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`mt-2 ${field}`} />
 
-                        <div className="relative">
-
-                            <textarea placeholder="your message..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} type="text" id="message" name="message" required className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5">
-                            </textarea>
-
-                        </div>
-
-                        <button type="submit" className=" px-3 py-2 w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                            Submit
+                        <button type="submit" className="mt-5 w-full rounded-full bg-gold py-3 font-medium text-ink hover:bg-cream">
+                            Email Shahrukh
                         </button>
+                        <p className="mt-3 text-center text-sm text-muted">This opens your email app with the message ready to send.</p>
                     </form>
                 </div>
             </RevealOnScroll>
-
-
         </section>
     )
 }

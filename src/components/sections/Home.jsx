@@ -1,35 +1,70 @@
+import { apps, profile } from "../../data/apps"
+import { asset } from "../../lib/asset"
 import { RevealOnScroll } from "../RevealOnScroll"
 
+const highlights = ["picsly", "vidnova", "todo-android", "ithemes"]
+
 export const Home = () => {
-    return <section id="home" className="min-h-screen flex items-center justify-center relative">
+    const shots = highlights
+        .map((id) => apps.find((app) => app.id === id))
+        .filter((app) => app?.shots?.length)
 
-        <RevealOnScroll>
-        <div className="text-center z-10 px-4">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-right">
-                Hi, I'm Shahrukh
-            </h1>
+    return (
+        <section id="home" className="relative px-4 pb-16 pt-28">
+            <RevealOnScroll>
+                <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div>
+                        <p className="mb-4 text-sm uppercase tracking-[0.22em] text-gold">{profile.studio}</p>
+                        <h1 className="font-serif text-5xl leading-[1.05] text-cream md:text-7xl">
+                            {profile.name}
+                        </h1>
+                        <p className="mt-4 font-serif text-2xl italic text-gold md:text-3xl">
+                            Looking for a publisher with capital.
+                        </p>
+                        <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+                            I build consumer mobile apps and I am looking for a partner that can fund and scale them, either through a revenue-share partnership or by acquiring selected apps.
+                        </p>
+                        <p className="mt-4 max-w-xl leading-relaxed text-muted">
+                            Four Android apps and four iOS apps are live or in review. A new AI image and video app for iOS launches in about a week. Utilities, productivity, health, and creative.
+                        </p>
+                        <div className="mt-8 flex flex-wrap gap-3">
+                            <a href="#apps" className="rounded-full bg-gold px-6 py-3 font-medium text-ink transition hover:-translate-y-0.5 hover:bg-cream">
+                                See the apps
+                            </a>
+                            <a href="#contact" className="rounded-full border border-gold/40 px-6 py-3 font-medium text-gold transition hover:bg-gold/10">
+                                Start a conversation
+                            </a>
+                        </div>
+                        <dl className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                            {[
+                                ["4", "Android apps"],
+                                ["4", "iOS apps"],
+                                ["1M+", "Picsly downloads"],
+                                ["1 week", "Next launch"],
+                            ].map(([value, label]) => (
+                                <div key={label} className="rounded-2xl border border-white/10 bg-card/80 px-3 py-4">
+                                    <dt className="font-serif text-2xl text-cream">{value}</dt>
+                                    <dd className="mt-1 text-sm text-muted">{label}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </div>
 
-            <p className="text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-            I’m a full-stack Mobile & Web App Developer with proven expertise in iOS (Swift), Android (Kotlin/Java), Flutter (Dart), Node.js, and React.js. I specialize in building scalable, high-performance applications — from intuitive mobile apps to robust backend APIs and modern web interfaces.
-            <br/>
-            I’ve helped startups and businesses launch cross-platform mobile apps, responsive websites, and cloud-powered APIs that deliver real value to users. My focus is on clean architecture, fast performance, and user-first design that scales across platforms.
-            </p>
-
-            <div className="flex justify-center space-x-4">
-
-                <a href="#projects" className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_0_15px_rgba(59,130,246,0.4)]">
-                    View Projects
-                </a>
-
-
-
-                <a href="#contact" className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_15px_rgba(59,130,246,0.2)]  hover:bg-blue-500/10">
-                    Contact me
-                </a>
-
-            </div>
-        </div>
-        </RevealOnScroll>
-
-    </section>
+                    <div className="flex gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-2 lg:overflow-visible">
+                        {shots.map((app) => (
+                            <a key={app.id} href={`#app/${app.id}`} className="group shrink-0">
+                                <img
+                                    src={asset(app.shots[0])}
+                                    alt={`${app.name} screenshot`}
+                                    className="h-72 w-auto rounded-3xl border border-white/10 object-cover shadow-2xl transition duration-300 group-hover:-translate-y-1 lg:h-64 lg:w-full"
+                                />
+                                <span className="mt-2 block text-sm font-medium text-cream">{app.name}</span>
+                                <span className="mt-1 block max-w-[16rem] text-sm text-muted lg:max-w-none">{app.tagline}</span>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </RevealOnScroll>
+        </section>
+    )
 }
