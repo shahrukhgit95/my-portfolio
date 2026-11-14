@@ -32,10 +32,13 @@ function App() {
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-      <div className={`min-h-screen bg-ink text-cream transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
+      {isLoaded && <div className="page-in min-h-screen bg-ink text-cream">
         <div className="pointer-events-none fixed inset-0 overflow-hidden">
-          <div className="absolute -top-32 left-1/2 h-[480px] w-[780px] -translate-x-1/2 rounded-full bg-gold/10 blur-3xl" />
-          <div className="absolute top-[40%] -left-24 h-72 w-72 rounded-full bg-coral/10 blur-3xl" />
+          <div className="absolute -top-32 left-1/2 h-[480px] w-[780px] -translate-x-1/2">
+            <div className="orb h-full w-full rounded-full bg-gold/10 blur-3xl" />
+          </div>
+          <div className="orb-alt absolute top-[40%] -left-24 h-72 w-72 rounded-full bg-coral/10 blur-3xl" />
+          <div className="orb absolute right-[-6rem] bottom-[8%] h-80 w-80 rounded-full bg-gold/5 blur-3xl" />
         </div>
         <div className="relative">
           <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -51,7 +54,7 @@ function App() {
             </>
           )}
         </div>
-      </div>
+      </div>}
     </>
   )
 }

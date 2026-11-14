@@ -25,7 +25,7 @@ export const AppDetail = ({ id }) => {
     }
 
     return (
-        <section className="px-4 pb-20 pt-28">
+        <section className="page-in px-4 pb-20 pt-28">
             <div className="mx-auto max-w-6xl">
                 <a href="#apps" className="text-sm text-muted hover:text-gold">← All apps</a>
 
@@ -62,6 +62,31 @@ export const AppDetail = ({ id }) => {
                                 Talk about this app
                             </a>
                         </div>
+
+                        {app.metrics && (
+                            <div className="mt-8">
+                                <h2 className="font-serif text-2xl">Audience</h2>
+                                <p className="mt-2 text-sm text-muted">{app.metrics.source} · {app.metrics.period}</p>
+                                <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                                    {app.metrics.stats.map((item) => (
+                                        <div key={item.label} className="rounded-2xl border border-white/10 bg-card px-4 py-3">
+                                            <dt className="text-sm text-muted">{item.label}</dt>
+                                            <dd className="mt-1 font-serif text-2xl text-cream">{item.value}</dd>
+                                            <p className="mt-1 text-xs text-muted">{item.detail}</p>
+                                        </div>
+                                    ))}
+                                </dl>
+                                <h3 className="mt-6 text-sm uppercase tracking-[0.18em] text-gold">Top countries</h3>
+                                <ul className="mt-3 flex flex-wrap gap-2">
+                                    {app.metrics.countries.map(([name, share]) => (
+                                        <li key={name} className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-cream">
+                                            {name} <span className="text-muted">{share}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="mt-4 text-sm leading-relaxed text-muted">{app.metrics.note}</p>
+                            </div>
+                        )}
 
                         <h2 className="mt-10 font-serif text-2xl">Features</h2>
                         <ul className="mt-4 space-y-3">
@@ -106,9 +131,7 @@ export const AppDetail = ({ id }) => {
                             </div>
                         ) : (
                             <div className="rounded-3xl border border-dashed border-white/15 bg-card p-8 text-muted">
-                                {app.id === "ai-studio"
-                                    ? "Screenshots go up with the launch, about a week from now."
-                                    : "Public store screenshots are not up yet. Use the TestFlight link, or the preview when one is attached."}
+                                Public store screenshots are not up yet. Use the TestFlight link, or the preview when one is attached.
                             </div>
                         )}
                     </div>

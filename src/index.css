@@ -50,6 +50,74 @@ body {
     animation: loading 0.8s ease infinite;
   }
 
+  @keyframes drift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(48px, 28px, 0) scale(1.08); }
+  }
+
+  @keyframes drift-alt {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-36px, 42px, 0) scale(1.12); }
+  }
+
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @keyframes nav-in {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes page-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes menu-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes menu-item {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes card-pop {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .orb {
+    animation: drift 16s ease-in-out infinite;
+  }
+
+  .orb-alt {
+    animation: drift-alt 20s ease-in-out infinite;
+  }
+
+  .nav-in {
+    animation: nav-in 0.7s ease both;
+  }
+
+  .page-in {
+    animation: page-in 0.7s ease both;
+  }
+
+  .menu-overlay {
+    animation: menu-in 0.25s ease both;
+  }
+
+  .menu-item {
+    animation: menu-item 0.45s ease both;
+  }
+
+  .float-shot {
+    animation: float-y 6s ease-in-out infinite;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(18px);
@@ -60,13 +128,59 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+
+  .reveal-hold {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-hold .enter {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+
+  .reveal-hold.visible .enter {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-hold .card-pop {
+    opacity: 0;
+  }
+
+  .reveal-hold.visible .card-pop {
+    opacity: 1;
+    animation: card-pop 0.65s ease;
+  }
+
+  .d1 { transition-delay: 0.08s; }
+  .d2 { transition-delay: 0.16s; }
+  .d3 { transition-delay: 0.24s; }
+  .d4 { transition-delay: 0.34s; }
+  .d5 { transition-delay: 0.44s; }
+  .d6 { transition-delay: 0.54s; }
+  .d7 { transition-delay: 0.64s; }
+  .d8 { transition-delay: 0.74s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal {
+
+  .reveal,
+  .reveal-hold .enter,
+  .reveal-hold .card-pop,
+  .orb,
+  .orb-alt,
+  .nav-in,
+  .page-in,
+  .menu-overlay,
+  .menu-item,
+  .float-shot {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
   }
 }

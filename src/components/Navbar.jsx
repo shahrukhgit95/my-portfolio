@@ -5,10 +5,10 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
         document.body.style.overflow = menuOpen ? "hidden" : ""
     }, [menuOpen])
 
-    const link = "text-muted hover:text-cream transition-colors"
+    const link = "relative text-muted transition-colors hover:text-cream after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
 
     return (
-        <nav className="fixed top-0 z-40 w-full border-b border-white/10 bg-ink/80 backdrop-blur-lg">
+        <nav className="nav-in fixed top-0 z-40 w-full border-b border-white/10 bg-ink/80 backdrop-blur-lg">
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
                 <a href="#home" className="font-serif text-xl text-cream">
                     coders<span className="text-gold">globe</span>

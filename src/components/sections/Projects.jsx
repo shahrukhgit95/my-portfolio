@@ -17,15 +17,15 @@ export const Apps = () => {
 
     return (
         <section id="apps" className="px-4 py-20">
-            <RevealOnScroll>
+            <RevealOnScroll className="reveal-hold">
                 <div className="mx-auto max-w-6xl">
-                    <p className="text-sm uppercase tracking-[0.22em] text-gold">The catalog</p>
-                    <h2 className="mt-3 font-serif text-4xl text-cream md:text-5xl">Apps ready to grow</h2>
-                    <p className="mt-4 max-w-2xl text-muted">
+                    <p className="enter text-sm uppercase tracking-[0.22em] text-gold">The catalog</p>
+                    <h2 className="enter d1 mt-3 font-serif text-4xl text-cream md:text-5xl">Apps ready to grow</h2>
+                    <p className="enter d2 mt-4 max-w-2xl text-muted">
                         Each card opens a page with the store screenshots and the features taken from the live listing, TestFlight, or the launch note.
                     </p>
 
-                    <div className="mt-8 flex gap-2">
+                    <div className="enter d3 mt-8 flex gap-2">
                         {filters.map((item) => (
                             <button
                                 key={item}
@@ -38,14 +38,15 @@ export const Apps = () => {
                         ))}
                     </div>
 
-                    <div className="mt-8 grid gap-6 md:grid-cols-2">
-                        {visible.map((app) => (
+                    <div className="mt-8 grid grid-cols-[repeat(auto-fill,minmax(15rem,18rem))] justify-center gap-5">
+                        {visible.map((app, index) => (
                             <a
-                                key={app.id}
+                                key={`${filter}-${app.id}`}
                                 href={`#app/${app.id}`}
-                                className="group overflow-hidden rounded-3xl border border-white/10 bg-card transition hover:-translate-y-1 hover:border-gold/40"
+                                className="card-pop group overflow-hidden rounded-3xl border border-white/10 bg-card transition duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_20px_40px_-24px_rgba(228,177,90,0.55)]"
+                                style={{ animationDelay: `${index * 0.08}s` }}
                             >
-                                <div className="h-[28rem] overflow-hidden bg-black/30">
+                                <div className="aspect-[3/4] overflow-hidden bg-black/30">
                                     {app.shots[0] ? (
                                         <img
                                             src={asset(app.shots[0])}
@@ -71,7 +72,7 @@ export const Apps = () => {
                                         </div>
                                     </div>
                                     <p className="mt-4 text-cream/85">{app.tagline}</p>
-                                    <div className="mt-4 flex items-center justify-between text-sm">
+                                    <div className="mt-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-sm">
                                         <span className={statusTone[app.status]}>{app.stat}</span>
                                         <span className="text-muted group-hover:text-gold">Features and screenshots →</span>
                                     </div>
