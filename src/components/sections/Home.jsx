@@ -25,7 +25,7 @@ export const Home = () => {
                             I build consumer mobile apps and I am looking for a partner that can fund and scale them, either through a revenue-share partnership or by acquiring selected apps.
                         </p>
                         <p className="enter d4 mt-4 max-w-xl leading-relaxed text-muted">
-                            Four Android apps and four iOS apps are live or in review. Picsly for iOS launches in about a week. Utilities, productivity, health, and creative.
+                            Four Android apps and four iOS apps are live or in review. Picsly is now live on both Android and iOS. Utilities, productivity, health, and creative.
                         </p>
                         <div className="enter d5 mt-8 flex flex-wrap gap-3">
                             <a href="#apps" className="rounded-full bg-gold px-6 py-3 font-medium text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_30px_-12px_rgba(228,177,90,0.8)]">
@@ -40,7 +40,7 @@ export const Home = () => {
                                 ["4", "Android apps"],
                                 ["4", "iOS apps"],
                                 ["1M+", "Picsly downloads"],
-                                ["1 week", "Next launch"],
+                                ["Live", "Picsly on iOS"],
                             ].map(([value, label], index) => (
                                 <div key={label} className={`enter d${index + 5}`}>
                                     <div className="h-full rounded-2xl border border-white/10 bg-card/80 px-3 py-4 transition duration-300 hover:-translate-y-1 hover:border-gold/40">

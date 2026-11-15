@@ -137,17 +137,63 @@ export const AppDetail = ({ id }) => {
                     </div>
                 </div>
 
+                {app.adminPanel && (
+                    <section className="mt-16">
+                        <p className="text-sm uppercase tracking-[0.18em] text-gold">{app.adminPanel.kicker}</p>
+                        <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
+                            <h2 className="font-serif text-3xl text-cream md:text-4xl">{app.adminPanel.title}</h2>
+                            <a
+                                href={app.adminPanel.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-full border border-gold/40 px-5 py-2.5 text-sm text-gold transition hover:border-gold hover:bg-gold/10"
+                            >
+                                Open the recording
+                            </a>
+                        </div>
+                        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{app.adminPanel.summary}</p>
+
+                        <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+                            <figure className="overflow-hidden rounded-3xl border border-white/10 bg-black">
+                                <iframe
+                                    title={`${app.name} admin panel walkthrough`}
+                                    src={app.adminPanel.embed}
+                                    className="aspect-video w-full"
+                                    allow="autoplay"
+                                    allowFullScreen
+                                />
+                                <figcaption className="bg-card px-4 py-3 text-sm text-muted">{app.adminPanel.caption}</figcaption>
+                            </figure>
+
+                            <div>
+                                <ul className="space-y-3">
+                                    {app.adminPanel.points.map((point) => (
+                                        <li key={point} className="flex gap-3 rounded-2xl border border-white/10 bg-card px-4 py-3 text-cream/90">
+                                            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gold" />
+                                            <span>{point}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <p className="mt-4 rounded-2xl border border-gold/25 bg-gold/5 px-4 py-3 text-sm leading-relaxed text-cream/85">
+                                    {app.adminPanel.note}
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                )}
+
                 {app.demos?.length > 0 && (
                     <section className="mt-16">
-                        <h2 className="font-serif text-3xl text-cream">Demos</h2>
-                        <div className="mt-6 grid gap-6 md:grid-cols-2">
+                        <h2 className="font-serif text-3xl text-cream">{app.demosTitle ?? "Demos"}</h2>
+                        <div className="mt-6 grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
                             {app.demos.map((demo) => (
                                 <figure key={demo.embed} className="overflow-hidden rounded-3xl border border-white/10 bg-black">
                                     <iframe
                                         title={`${app.name} demo: ${demo.label}`}
                                         src={demo.embed}
-                                        className="aspect-video w-full"
+                                        className={`w-full ${demo.aspect ?? "aspect-video"}`}
                                         allow="autoplay"
+                                        allowFullScreen
                                     />
                                     <figcaption className="flex items-center justify-between gap-3 bg-card px-4 py-3">
                                         <span className="text-cream">{demo.label}</span>

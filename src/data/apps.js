@@ -9,6 +9,32 @@ export const profile = {
 
 const play = (id) => `https://play.google.com/store/apps/details?id=${id}`
 
+const drive = (fileId) => ({
+    href: `https://drive.google.com/file/d/${fileId}/view?usp=sharing`,
+    embed: `https://drive.google.com/file/d/${fileId}/preview`,
+})
+
+const ADMIN_PANEL_FILE = "1_Qmu-qMVKYmesBOTpya90iv1u8Rg7Fnj"
+
+const adminPanel = (note) => ({
+    kicker: "Backend control",
+    title: "Admin panel",
+    summary:
+        "Every category, AI template, and video template in the app is created and controlled from one web dashboard. Content is added, renamed, reordered, priced, and published from the backend, so the app changes without waiting for a release.",
+    note,
+    embed: drive(ADMIN_PANEL_FILE).embed,
+    href: drive(ADMIN_PANEL_FILE).href,
+    caption: "Templates Dashboard walkthrough",
+    points: [
+        "Create, rename, reorder, and delete the categories that appear in the app",
+        "Publish a template with its title, prompt, original and generated preview, pro status, and show status",
+        "Search templates by title, ID, or prompt, then edit or remove them in place",
+        "Run the AI video library by category, with previews, search, and template ID filtering",
+        "Manage credits from the dashboard, so a promo or a new AI action can be priced without an app update",
+        "Check AI models, AI capacity, API health, notifications, and Google sign-in users in the same place",
+    ],
+})
+
 export const apps = [
     {
         id: "picsly",
@@ -31,6 +57,9 @@ export const apps = [
         icon: "apps/picsly/icon.png",
         shots: [1, 2, 3, 4, 5, 6].map((n) => `apps/picsly/${n}.jpg`),
         links: [{ label: "Google Play", href: play("ai.photo.enhancer.photoeditor.app") }],
+        adminPanel: adminPanel(
+            "The dashboard has a listing platform switch. Categories, templates, and their order apply to the selected listing only, so the Picsly and VidNova apps keep separate content from one panel."
+        ),
         metrics: {
             period: "1 May – 31 Oct 2026",
             source: "Google Analytics and Play Console",
@@ -104,6 +133,9 @@ export const apps = [
         icon: "apps/vidnova/icon.png",
         shots: [1, 2, 3, 4].map((n) => `apps/vidnova/${n}.jpg`),
         links: [{ label: "Google Play", href: play("app.VidNova.editor") }],
+        adminPanel: adminPanel(
+            "Switch the listing platform to VidNova and the same panel manages the categories, AI templates, and video templates that feed VidNova, without touching the Picsly listing."
+        ),
         metrics: {
             period: "1 May – 31 Oct 2026",
             source: "Google Analytics and Play Console",
@@ -223,10 +255,10 @@ export const apps = [
         name: "Picsly",
         platform: "iOS",
         category: "Creative",
-        status: "Launching soon",
-        stat: "About a week out",
+        status: "Live",
+        stat: "Live on the App Store",
         tagline: "Turn photos into art with AI styles, tools, and portraits.",
-        summary: "Picsly on iOS turns a photo into art. It has trending AI styles and video templates, plus tools to enhance, restore, swap faces, change clothes, hair, and age, and make studio headshots. It launches in about a week.",
+        summary: "Picsly on iOS turns a photo into art. It has trending AI styles and video templates, plus tools to enhance, restore, swap faces, change clothes, hair, and age, and make studio headshots. It spent a week in App Store review and is now live.",
         features: [
             "Trending AI styles and viral photo templates",
             "Pose changer and trending AI video templates",
@@ -242,6 +274,15 @@ export const apps = [
             "https://cdn.piclsy.com/my-portfolio/picsly-ios/03-portraits.png",
             "https://cdn.piclsy.com/my-portfolio/picsly-ios/featured.jpg",
         ],
-        links: [],
+        links: [{ label: "TestFlight beta", href: "https://testflight.apple.com/join/He7PgkXZ" }],
+        demosTitle: "App walkthrough",
+        demos: [
+            ["App overview", "1yBEKwqk2mZYZHz2wuvSTRwRA429SGj1f"],
+            ["AI video generation", "1-GJ3nnvBLNyGiTSDrBI8vXCr_nmg9mTs"],
+            ["Tools and subscription", "1H3aUIHUvL5JrgZFqDiHo4vHegeDvrt_J"],
+        ].map(([label, fileId]) => ({ label, ...drive(fileId), aspect: "aspect-[9/16]" })),
+        adminPanel: adminPanel(
+            "The iOS app reads the same categories and templates from the dashboard, so a new AI style or video template can go live on Android and iOS together."
+        ),
     },
 ]

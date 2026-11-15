@@ -25,7 +25,7 @@ export const Partnership = () => {
                         Fund and scale the apps, or acquire the ones that fit.
                     </h2>
                     <p className="enter d2 mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-                        Codersglobe is a lean app studio. The catalog covers utilities, productivity, health, and creative tools, the kinds of consumer apps a publisher can put user acquisition behind.
+                        Codersglobe is a lean app studio. The catalog covers utilities, productivity, health, and creative tools, the kinds of consumer apps a publisher can put user acquisition behind. The AI apps share one web admin panel, so categories, templates, and credits are changed from the backend without an app release.
                     </p>
                     <div className="mt-10 grid gap-4 md:grid-cols-3">
                         {paths.map((item, index) => (
@@ -41,7 +41,7 @@ export const Partnership = () => {
                         <li className="rounded-2xl border border-white/10 px-4 py-3">Picsly is past 1 million downloads. From May through October 2026 it had 871K active users and 795K new users. iThemes is past 50 thousand.</li>
                         <li className="rounded-2xl border border-white/10 px-4 py-3">KaloriesAI and the iOS to-do app are in App Store review.</li>
                         <li className="rounded-2xl border border-white/10 px-4 py-3">Wondelo Password Manager is live on the App Store.</li>
-                        <li className="rounded-2xl border border-white/10 px-4 py-3">Picsly for iOS launches in about a week.</li>
+                        <li className="rounded-2xl border border-white/10 px-4 py-3">Picsly for iOS is live on the App Store after a week in review.</li>
                     </ul>
                 </div>
             </RevealOnScroll>

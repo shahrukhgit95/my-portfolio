@@ -22,7 +22,7 @@ export const Apps = () => {
                     <p className="enter text-sm uppercase tracking-[0.22em] text-gold">The catalog</p>
                     <h2 className="enter d1 mt-3 font-serif text-4xl text-cream md:text-5xl">Apps ready to grow</h2>
                     <p className="enter d2 mt-4 max-w-2xl text-muted">
-                        Each card opens a page with the store screenshots and the features taken from the live listing, TestFlight, or the launch note.
+                        Each card opens a page with the store screenshots, the features taken from the live listing, and for the AI apps a look at the admin panel that controls the content from the backend.
                     </p>
 
                     <div className="enter d3 mt-8 flex gap-2">
